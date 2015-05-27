@@ -1,0 +1,46 @@
+{
+  "name": "capitol-sample",
+  "version": "0.1.0",
+  "description": "A sample project for the Capitol framework.",
+  "main": "server.js",
+  "packageType": "app",
+  "repositoryInstall": true,
+  "packageBuild": "prod",
+  "dependencies": {
+    "capitol-core": ">0.6.0-0",
+    "capitol-types": ">0.6.0-0",
+    "connect-memcached": "0.1.0",
+    "press-corp": "0.1.4"
+  },
+  "devDependencies": {
+    "capitol-dome": ">0.6.0-0",
+    "capitol-core-dev": ">0.6.0-0",
+    "capitol-dome-dev": ">0.6.0-0"
+  },
+  "privateDeps": [
+    "capitol-core",
+    "capitol-core-dev",
+    "capitol-dome",
+    "capitol-dome-dev",
+    "capitol-types"
+  ],
+  "scripts": {
+    "package": "secret-service package",
+    "build-dev": "secret-service build dev",
+    "precommit": "secret-service build precommit",
+    "ci-test-client": "secret-service app test-client-coverage-ci",
+    "ci-test-server": "secret-service app test-server-ci && secret-service app test-server-coverage",
+    "ci-combine-lcov": "cat test/reports/client-coverage/lcov.info test/reports/server-coverage/lcov.info > test/reports/combined_lcov.info",
+    "ci-test": "npm run ci-test-server && npm run ci-test-client",
+    "quickstart": "secret-service server local",
+    "quicktest": "secret-service app test-client",
+    "start": "npm run build-dev && npm run quickstart",
+    "dev-test": "npm run build-dev && npm run quicktest",
+    "test": "npm run ci-test && npm run ci-combine-lcov"
+  },
+  "browser": {},
+  "browserify": {},
+  "browserify-shim": {},
+  "author": "",
+  "license": "ISC"
+}

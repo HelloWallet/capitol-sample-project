@@ -1,0 +1,11 @@
+/* Compass Settings */
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+$legacy-support-for-ie8: false;
+
+@import "compass/css3";
+@import "compass/typography/text/ellipsis";
+@import "compass/utilities/general/clearfix";
+
+@import "libs/variables";
+@import "libs/bootstrap";

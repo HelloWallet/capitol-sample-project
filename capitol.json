@@ -1,0 +1,9 @@
+{
+	"debug": {
+		"port": 5865,
+		"inspector": {
+			"webPort": 9008,
+			"preload": true
+		}
+	}
+}
