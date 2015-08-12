@@ -7,23 +7,15 @@
   "repositoryInstall": true,
   "packageBuild": "prod",
   "dependencies": {
-    "capitol-core": ">0.6.0-0",
-    "capitol-types": ">0.6.0-0",
-    "connect-memcached": "0.1.0",
-    "press-corp": "0.1.4"
+    "capitol-core": "latest",
+    "capitol-types": "latest",
+    "press-corp": "latest"
   },
   "devDependencies": {
-    "capitol-dome": ">0.6.0-0",
-    "capitol-core-dev": ">0.6.0-0",
-    "capitol-dome-dev": ">0.6.0-0"
+    "capitol-dome": "latest",
+    "capitol-core-dev": "latest",
+    "capitol-dome-dev": "latest"
   },
-  "privateDeps": [
-    "capitol-core",
-    "capitol-core-dev",
-    "capitol-dome",
-    "capitol-dome-dev",
-    "capitol-types"
-  ],
   "scripts": {
     "package": "secret-service package",
     "build-dev": "secret-service build dev",

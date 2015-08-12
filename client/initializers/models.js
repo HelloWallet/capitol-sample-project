@@ -12,9 +12,6 @@ Ember.Application.initializer({
 		_.forIn(models, function(model, key) {
 			key = key.replace(/_model$/, "");
 			App[Ember.String.classify(key)] = model;
-			// container.register("model:" + Ember.String.dasherize(key), model);
-			// App.register("model:" + Ember.String.dasherize(key), model);
-			// container.lookup("model:" + Ember.String.dasherize(key));
 		});
 	}
 });
