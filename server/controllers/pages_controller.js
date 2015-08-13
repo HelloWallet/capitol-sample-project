@@ -4,18 +4,20 @@ var capitol = require("capitol-core"),
     Controller = capitol.Controller,
     config = capitol.config;
 
-var PagesController = new Controller();
+var PagesController = new Controller({
+    csrf: false
+});
+PagesController.setup();
 
-// PagesController.noCacheFilter();
-// PagesController.environmentFilter();
-
-PagesController.main = function() {
-    this.title = "My New Capitol App";
-    this.region = config.get("env");
-    this.clientLogLevel = config.get("logging:clientLogLevel");
-    this.useMin = config.get("server:useMinimizedCss");
-    this.initialApp = "application";
-    this.render();
-};
+PagesController.get("/", function(req, res) {
+    var params = {
+        title: "My New Capitol App",
+        region: config.get("env"),
+        clientLogLevel: config.get("logging:clientLogLevel"),
+        useMin: config.get("server:useMinimizedCss"),
+        initialApp: "application"
+    };
+    res.render("pages/main", params);
+});
 
 module.exports = PagesController;

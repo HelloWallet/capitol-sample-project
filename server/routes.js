@@ -14,12 +14,12 @@ var capitol = require("capitol-core"),
     passport = capitol.authentication.passport,
     path = require("path");
 
-module.exports = function routes() {
+module.exports = function routes(router) {
     var clientErrorLogger = capitol.logger.getNamedLogger("client");
     var isDev = config.get("env") === "development";
     var jsDir = path.join(__dirname, "../", config.get("app:staticFiles"), "js/");
 
-    this.post("/error", pressCorp.error({
+    router.post("/error", pressCorp.error({
         srcUrl: jsDir,
         logger: clientErrorLogger,
         src: capitol.config.get("server:errorHandlerEnabled") ? [
@@ -34,18 +34,15 @@ module.exports = function routes() {
         ] : [ ]
     }));
 
-    this.post("/log", pressCorp.log({
+    router.post("/log", pressCorp.log({
         logger: clientErrorLogger
     }));
 
     console.log("ADDING ROUTE FOR PAGES MAIN");
 
-    this.root("pages#main");
+    var pagesController = require("./controllers/pages_controller");
+    router.install("/", pagesController);
 
-    /*
-        Routing configured with capitol so we can
-        support API docs.
-     */
-    var routing = capitol.RouteManager.register(this);
-    routing.resources("apps");
+    var appsController = require("./controllers/apps_controller");
+    router.resource("/apps", appsController)
 };

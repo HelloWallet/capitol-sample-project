@@ -8,8 +8,12 @@ var capitol = require("capitol-core"),
     config = capitol.config,
     sessionStore = require("./server/util/session").getSessionStore();
 
-var app = capitol.Locomotive.createServer({
+var app = new capitol.Application({
 	sessionStore: sessionStore
 });
+
+require("./server/routes")(app.getRouter());
+
+app.boot();
 
 module.exports = app;
