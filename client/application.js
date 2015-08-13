@@ -13,5 +13,3 @@ App.Router.map(function() {
     this.route("dashboard");
     this.route("about");
 });
-
-App.advanceReadiness();

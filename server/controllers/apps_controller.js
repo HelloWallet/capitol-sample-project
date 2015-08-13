@@ -10,8 +10,8 @@ var AppsController = new RESTController({
 	schema: "App"
 });
 
-AppsController.index = function() {
-	this.sendResources({
+AppsController.index = function(req, res) {
+	res.json({
 		apps: [
 			{
 				name: "RE Local Dev",

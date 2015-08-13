@@ -7,14 +7,14 @@
   "repositoryInstall": true,
   "packageBuild": "prod",
   "dependencies": {
-    "capitol-core": "latest",
+    "capitol-core": "canary",
     "capitol-types": "latest",
     "press-corp": "latest"
   },
   "devDependencies": {
     "capitol-dome": "latest",
     "capitol-core-dev": "latest",
-    "capitol-dome-dev": "latest"
+    "capitol-dome-dev": "canary"
   },
   "scripts": {
     "package": "secret-service package",
