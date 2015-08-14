@@ -9,10 +9,13 @@ var PagesController = new Controller({
 });
 PagesController.setup();
 
+PagesController.get("/", PagesController.getCSRFMiddleware());
+
 PagesController.get("/", function(req, res) {
     var params = {
         title: "My New Capitol App",
         region: config.get("env"),
+        _csrf: req.csrfToken(),
         clientLogLevel: config.get("logging:clientLogLevel"),
         useMin: config.get("server:useMinimizedCss"),
         initialApp: "application"

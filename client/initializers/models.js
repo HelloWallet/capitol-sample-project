@@ -9,7 +9,8 @@ Ember.Application.initializer({
 	name: "registerModels",
 	after: "store",
 	initialize: function(container, App) {
-		_.forIn(models, function(model, key) {
+		_.forIn(models, function(modelFn, key) {
+            var model = modelFn.call(undefined, App);
 			key = key.replace(/_model$/, "");
 			App[Ember.String.classify(key)] = model;
 		});

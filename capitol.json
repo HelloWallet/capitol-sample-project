@@ -5,5 +5,12 @@
 			"webPort": 9008,
 			"preload": true
 		}
-	}
+	},
+    "watch": {
+        "client-src": {
+            "src": [
+                "shared/**/*.js"
+            ]
+        }
+    }
 }

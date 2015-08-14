@@ -1,13 +1,14 @@
 "use strict";
 
-/*jslint browser:true */
-var Ember = require("capitol-dome").Ember;
+var Dome = require("capitol-dome");
+var Ember = Dome.Ember;
 var _ = require("capitol-types")._;
-require("./initializers/");
+require("./initializers/").init();
 
-var App = window.App = module.exports = require("capitol-dome").createApplication("App");
+var App = require("capitol-dome").createApplication("App");
 
 require("@templates");
+require("./initializers/").initApp(App);
 
 App.Router.map(function() {
     this.route("dashboard");

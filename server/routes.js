@@ -43,6 +43,6 @@ module.exports = function routes(router) {
     var pagesController = require("./controllers/pages_controller");
     router.install("/", pagesController);
 
-    var appsController = require("./controllers/apps_controller");
-    router.resource("/apps", appsController)
+    var sampleController = require("./controllers/sample_controller");
+    router.resource("/samples", sampleController);
 };

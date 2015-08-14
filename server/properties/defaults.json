@@ -1,0 +1,7 @@
+{
+    "app": {
+        "server": {
+            "schemas": "/shared/schemas"
+        }
+    }
+}
