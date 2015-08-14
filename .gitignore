@@ -4,3 +4,4 @@
 /deploy/
 /.tmp/
 /publicRev/
+.DS_Store

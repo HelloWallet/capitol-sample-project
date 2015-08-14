@@ -2,5 +2,24 @@
   {{outlet "loading"}}
 </div>
 <div id="Application">
-  {{outlet}}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          {{#link-to "index" class="navbar-brand"}}{{i18n 'app.company'}}{{/link-to}}
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li class="{{if isDashboardActive 'active'}}">{{#link-to "dashboard"}}Dashboard{{/link-to}}</li>
+            <li class="{{if isAboutActive 'active'}}">{{#link-to "about"}}About{{/link-to}}</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {{liquid-outlet}}
 </div>

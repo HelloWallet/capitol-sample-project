@@ -12,7 +12,7 @@
     "press-corp": "latest"
   },
   "devDependencies": {
-    "capitol-dome": "latest",
+    "capitol-dome": "canary",
     "capitol-core-dev": "latest",
     "capitol-dome-dev": "canary"
   },

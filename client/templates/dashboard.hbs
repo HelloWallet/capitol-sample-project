@@ -3,24 +3,26 @@
         <h1>Hello, world!</h1>
         <p>Here is our Capitol starter site</p>
         <p>
-            <button class="btn btn-primary btn-lg">Learn more &raquo;</button>
+            {{#link-to 'about' class="btn btn-primary btn-lg"}}Learn more &raquo;{{/link-to}}
             <button class="btn btn-lg" {{action 'add'}}>Add</button>
         </p>
     </div>
 </div>
 <div class="container">
-    <div class="row">
-        {{#each note in list}}
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{note.name}}</div>
-                <div class="panel-body">
-                    <div style="height: 100px">{{note.message}}</div>
-                    <div><a target="_blank" href="{{note.uri}}">Click me!</a></div>
-                    <div><button class="btn btn-small" {{action 'save' note}}>Save</button></div>
-                </div>
-            </div>
-        </div>
-        {{/each}}
+    {{#each list as |note|}}
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        {{#liquid-bind note class="note-card" as |note|}}
+            {{#note-card as |section|}}
+                {{#if section.isHeader}}{{note.name}}{{/if}}
+                {{#if section.isBody}}
+                    <div style="min-height: 100px;" class="note-message">{{liquid-bind note.message}}</div>
+                    <a target="_blank" href="{{note.uri}}">Click me!</a>
+                {{/if}}
+                {{#if section.isFooter}}
+                    <button class="btn btn-small" {{action 'save' note}}>Save</button>
+                {{/if}}
+            {{/note-card}}
+        {{/liquid-bind}}
     </div>
+    {{/each}}
 </div>

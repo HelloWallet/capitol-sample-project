@@ -10,6 +10,10 @@ var App = require("capitol-dome").createApplication("App");
 require("@templates");
 require("./initializers/").initApp(App);
 
+App.Router.reopen({
+  location: 'history'
+});
+
 App.Router.map(function() {
     this.route("dashboard");
     this.route("about");

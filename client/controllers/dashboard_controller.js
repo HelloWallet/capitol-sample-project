@@ -4,9 +4,9 @@ var Ember = require("capitol-dome").Ember;
 
 module.exports = Ember.Controller.extend({
     onModelChange: function() {
-        var a = Ember.A();
-        a.addObjects(this.get("model"));
-        this.set("list", a);
+        var list = Ember.A();
+        this.get("model").forEach(function(m) { list.pushObject(m); });
+        this.set("list", list);
     }.observes("model"),
     actions: {
         save: function(record) {
@@ -16,7 +16,11 @@ module.exports = Ember.Controller.extend({
             var newNote = this.store.createRecord("sample");
             newNote.set("name", "test");
             newNote.set("message", "new note message");
-            this.get("list").pushObject(newNote);
+            
+            var list = Ember.A();
+            this.get("list").forEach(function(m) { list.pushObject(m); });
+            list.pushObject(newNote);
+            this.set("list", list);
         }
     }
 });

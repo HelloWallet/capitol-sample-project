@@ -12,5 +12,14 @@
                 "shared/**/*.js"
             ]
         }
+    },
+    "assets": {
+        "static": [
+            {
+                "glob": "*",
+                "dest": "webfonts",
+                "base": "${libDir}/bower_components/bootstrap-sass-official/assets/fonts/bootstrap"
+            }
+        ]
     }
 }
