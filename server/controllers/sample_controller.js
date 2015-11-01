@@ -9,10 +9,9 @@ var capitol = require("capitol-core"),
 
 var SampleController = new RESTController({
 	logger: logger,
-	schema: true
+	schema: true,
+    requireAuth: false
 });
-
-SampleController.addValidationFilters();
 
 SampleController.index = RESTController.annotatedFn({
 	schema: schemas.resourceList
@@ -20,7 +19,7 @@ SampleController.index = RESTController.annotatedFn({
 	res.json({
 		samples: [
 			{
-				_id: 1,
+				id: 1,
 				name: "Note 1",
 				message: "Message of this note",
 				url: "http://localhost:8282"
@@ -34,12 +33,18 @@ SampleController.create = RESTController.annotatedFn({
 }, function(req, res) {
 	var id = Math.floor(Math.random()*1000);
 	var newNote = req.body.sample;
-	
-	res.json({
-		sample: _.merge({
-			_id: id
-		}, newNote)
-	});
+
+    var resp = {
+        sample: _.merge({
+            id: id
+        }, newNote)
+    };
+    resp.sample.child = {
+        dummy: "1",
+        dummy2: "2"
+    }
+
+	res.json(resp);
 });
 
 SampleController.update = RESTController.annotatedFn({
@@ -50,12 +55,17 @@ SampleController.update = RESTController.annotatedFn({
 
 	newNote.message += " Saved!";
 
-	res.json({
+    var resp = {
 		sample: _.merge({
-			_id: id
+			id: id
 		}, newNote)
-	});
+	};
+    resp.sample.child = {
+        dummy: "1",
+        dummy2: "2"
+    }
+
+	res.json(resp);
 });
 
 module.exports = SampleController;
-

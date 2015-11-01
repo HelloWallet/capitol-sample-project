@@ -8,12 +8,12 @@
   "packageBuild": "prod",
   "dependencies": {
     "capitol-core": "canary",
-    "capitol-types": "latest",
+    "capitol-types": "canary",
     "press-corp": "latest"
   },
   "devDependencies": {
     "capitol-dome": "canary",
-    "capitol-core-dev": "latest",
+    "capitol-core-dev": "canary",
     "capitol-dome-dev": "canary"
   },
   "scripts": {

@@ -1,11 +1,17 @@
 var S = require("capitol-types").schema,
     ResourceSchemaSet = require("capitol-types").ResourceSchemaSet;
 
+var sampleChildSchema = S.object({
+    dummy: S.safeString(),
+    dummy2: S.safeString()
+}).tags("sampleChild");
+
 var sampleSchema = S.object({
-    _id: S.number().integer().meta({primaryKey: true}),
+    id: S.number().integer().meta({primaryKey: true}),
     name: S.safeString(),
     message: S.safeString(),
-    url: S.string().uri()
+    url: S.string().uri(),
+    child: sampleChildSchema
 }).tags("sample");
 
 module.exports = new ResourceSchemaSet({

@@ -5,7 +5,8 @@ var capitol = require("capitol-core"),
     config = capitol.config;
 
 var PagesController = new Controller({
-    csrf: false
+    csrf: false,
+    enableAuthFilter: false
 });
 
 var renderHostPage = [
